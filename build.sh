@@ -27,7 +27,7 @@ for arg in "$@"; do
         --no-web)
             EMSDK_SKIP_WEB=true
             ;;
-    esac
+    esac # CORRECTED: Must be closed by 'esac'
 done
 
 if [ "$FULL_CLEAN" = true ]; then
@@ -69,7 +69,7 @@ function build_target {
     echo "--- Building $TARGET_NAME ---"
 
     # Compile. Link_FLAGS controls static linking for system libs.
-    $COMPILER main.c -o $OUTPUT_FILE \
+    $COMPILER src/main.c -o $OUTPUT_FILE \
         -I./${RAYLIB_BASE_PATH}/include \
         -L./${RAYLIB_BASE_PATH}/lib \
         ${LINK_FLAGS} \
@@ -167,7 +167,7 @@ else
 
         # --- Build the WASM HTML (WebAssembly) ---
         echo "Building the WASM HTML"
-        emcc main.c -o builds/WebLatest/CoolWebWASM.html \
+        emcc src/main.c -o builds/WebLatest/CoolWebWASM.html \
             -s USE_GLFW=3 \
             -s ASYNCIFY \
             -s SINGLE_FILE=1 \
@@ -181,7 +181,7 @@ else
 
         # --- Build the JS HTML (Pure JavaScript) ---
         echo "Building the JS HTML"
-        emcc main.c -o builds/WebLatest/CoolWebJS.html \
+        emcc src/main.c -o builds/WebLatest/CoolWebJS.html \
             -s USE_GLFW=3 \
             -s ASYNCIFY \
             -s SINGLE_FILE=1 \
