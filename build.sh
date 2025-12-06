@@ -36,7 +36,6 @@ if [ "$FULL_CLEAN" = true ]; then
     echo "Cleaned build dir."
     mkdir builds
     echo "Build directory recreated."
-    # Remove -fc from arguments before shifting, or handle it as done below.
     # Note: Shift logic for flags is simplified; assuming flags are checked and then build proceeds.
 else
     echo "Standard Build Mode. Use -fc for a Full Clean."
@@ -176,7 +175,7 @@ else
             -lraylib \
             -I./${RAYLIB_WEB}/include \
             -L./${RAYLIB_WEB}/lib \
-            --shell-file minimalui.html \
+            --shell-file **src/minimalui.html** \
             --embed-file assets
 
         # --- Build the JS HTML (Pure JavaScript) ---
@@ -191,7 +190,7 @@ else
             -lraylib \
             -I./${RAYLIB_WEB}/include \
             -L./${RAYLIB_WEB}/lib \
-            --shell-file minimalui.html \
+            --shell-file **src/minimalui.html** \
             --embed-file assets
 
         echo "Packing Web into tar"
