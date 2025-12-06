@@ -42,7 +42,8 @@ If you are **not** on Arch Linux, you must manually install the following depend
 
 | File/Folder | Description | Purpose | 
 | ----- | ----- | ----- | 
-| **`main.c`** | Your primary Raylib game source code. | This is the file compiled into all targets (e.g., `CoolLinux`, `CoolWin64.exe`). | 
+| **`src/`** | ** Source directory** |The primary directory for storing build files, such as main.c in this template. |
+| **`src/main.c`** | Your primary Raylib game source code. | This is the file compiled into all targets (e.g., `CoolLinux`, `CoolWin64.exe`). | 
 | **`raylib/`** | Contains pre-compiled Raylib binaries. | Includes static libraries for all supported platforms (Linux, Win32/64, Web). | 
 | **`assets/`** | Placeholder asset directory. | Used to embed images, sounds, or other resources into the final builds. | 
 | **`builds/`** | **Output Directory.** | All compiled executables and archives are placed here. | 
