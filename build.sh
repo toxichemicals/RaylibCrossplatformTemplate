@@ -102,14 +102,20 @@ if command -v emcc &> /dev/null; then
     emcc src/main.c -o "${WEB_OUT}/CoolWebWASM.html" \
         -I"$WEB_INC" "$WEB_LIB" \
         $COMMON_WEB_FLAGS \
-        ${EXTRA_FLAGS}
+	-s EXPORTED_RUNTIME_METHODS=['HEAPF32','requestFullscreen'] \
+        -s ALLOW_MEMORY_GROWTH=1 \
+	-DPLATFORM_WEB\
+	${EXTRA_FLAGS}
     check_status "Web WASM"
 
     # B. JS version (WASM=0)
     echo "Compiling CoolWebJS.html..."
     emcc src/main.c -o "${WEB_OUT}/CoolWebJS.html" \
         -I"$WEB_INC" "$WEB_LIB" \
+	-s EXPORTED_RUNTIME_METHODS=['HEAPF32','requestFullscreen'] \
         $COMMON_WEB_FLAGS \
+	-s ALLOW_MEMORY_GROWTH=1 \
+	-DPLATFORM_WEB \
         -s WASM=0 \
         ${EXTRA_FLAGS}
     check_status "Web JS"
